@@ -119,20 +119,20 @@ const char* Transmogrification::GetSlotName(uint8 slot, WorldSession* session) c
 
     switch (slot)
     {
-        case EQUIPMENT_SLOT_HEAD: session->GetAcoreString(LANG_SLOT_NAME_HEAD);
-        case EQUIPMENT_SLOT_SHOULDERS: session->GetAcoreString(LANG_SLOT_NAME_SHOULDERS);
-        case EQUIPMENT_SLOT_BODY: session->GetAcoreString(LANG_SLOT_NAME_BODY);
-        case EQUIPMENT_SLOT_CHEST: session->GetAcoreString(LANG_SLOT_NAME_CHEST);
-        case EQUIPMENT_SLOT_WAIST: session->GetAcoreString(LANG_SLOT_NAME_WAIST);
-        case EQUIPMENT_SLOT_LEGS: session->GetAcoreString(LANG_SLOT_NAME_LEGS);
-        case EQUIPMENT_SLOT_FEET: session->GetAcoreString(LANG_SLOT_NAME_FEET);
-        case EQUIPMENT_SLOT_WRISTS: session->GetAcoreString(LANG_SLOT_NAME_WRISTS);
-        case EQUIPMENT_SLOT_HANDS: session->GetAcoreString(LANG_SLOT_NAME_HANDS);
-        case EQUIPMENT_SLOT_BACK: session->GetAcoreString(LANG_SLOT_NAME_BACK);
-        case EQUIPMENT_SLOT_MAINHAND: session->GetAcoreString(LANG_SLOT_NAME_MAINHAND);
-        case EQUIPMENT_SLOT_OFFHAND: session->GetAcoreString(LANG_SLOT_NAME_OFFHAND);
-        case EQUIPMENT_SLOT_RANGED: session->GetAcoreString(LANG_SLOT_NAME_RANGED);
-        case EQUIPMENT_SLOT_TABARD: session->GetAcoreString(LANG_SLOT_NAME_TABARD);
+        case EQUIPMENT_SLOT_HEAD: return session->GetAcoreString(LANG_SLOT_NAME_HEAD);
+        case EQUIPMENT_SLOT_SHOULDERS: return session->GetAcoreString(LANG_SLOT_NAME_SHOULDERS);
+        case EQUIPMENT_SLOT_BODY: return session->GetAcoreString(LANG_SLOT_NAME_BODY);
+        case EQUIPMENT_SLOT_CHEST: return session->GetAcoreString(LANG_SLOT_NAME_CHEST);
+        case EQUIPMENT_SLOT_WAIST: return session->GetAcoreString(LANG_SLOT_NAME_WAIST);
+        case EQUIPMENT_SLOT_LEGS: return session->GetAcoreString(LANG_SLOT_NAME_LEGS);
+        case EQUIPMENT_SLOT_FEET: return session->GetAcoreString(LANG_SLOT_NAME_FEET);
+        case EQUIPMENT_SLOT_WRISTS: return session->GetAcoreString(LANG_SLOT_NAME_WRISTS);
+        case EQUIPMENT_SLOT_HANDS: return session->GetAcoreString(LANG_SLOT_NAME_HANDS);
+        case EQUIPMENT_SLOT_BACK: return session->GetAcoreString(LANG_SLOT_NAME_BACK);
+        case EQUIPMENT_SLOT_MAINHAND: return session->GetAcoreString(LANG_SLOT_NAME_MAINHAND);
+        case EQUIPMENT_SLOT_OFFHAND: return session->GetAcoreString(LANG_SLOT_NAME_OFFHAND);
+        case EQUIPMENT_SLOT_RANGED: return session->GetAcoreString(LANG_SLOT_NAME_RANGED);
+        case EQUIPMENT_SLOT_TABARD: return session->GetAcoreString(LANG_SLOT_NAME_TABARD);
         default: return NULL;
     }
 }
