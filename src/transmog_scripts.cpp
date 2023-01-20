@@ -393,17 +393,17 @@ public:
                 {
                     std::unordered_map<uint32, std::string>::iterator searchStringIterator = sT->searchStringByPlayer.find(player->GetGUID().GetCounter());
                     hasSearchString = !(searchStringIterator == sT->searchStringByPlayer.end());
-                    std::string searchDisplayValue(hasSearchString ? searchStringIterator->second : "Search....");
+                    std::string searchDisplayValue(hasSearchString ? searchStringIterator->second : "搜索");
                     // Offset values to add Search gossip item
                     if (pageNumber == 0)
                     {
                         if (hasSearchString)
                         {
-                            AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, sT->GetItemIcon(30620, 30, 30, -18, 0) + "Searching for: " + searchDisplayValue, slot + 1, 0, "Search for what item?", 0, true);
+                            AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, sT->GetItemIcon(30620, 30, 30, -18, 0) + "搜索: " + searchDisplayValue, slot + 1, 0, "搜索什么物品？", 0, true);
                         }
                         else
                         {
-                            AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, sT->GetItemIcon(30620, 30, 30, -18, 0) + "Search....", slot + 1, 0, "Search for what item?", 0, true);
+                            AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, sT->GetItemIcon(30620, 30, 30, -18, 0) + "搜索", slot + 1, 0, "搜索什么物品？", 0, true);
                         }
                     }
                     else
@@ -422,7 +422,7 @@ public:
                         else
                         {
                             // Add invisible item entry
-                            AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "Hide Slot", slot, UINT_MAX, "You are hiding the item in this slot.\n你想继续吗?\n\n" + lineEnd, 0, false);
+                            AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "隐藏插槽", slot, UINT_MAX, "您正在隐藏此插槽中的物品。\n你想继续吗?\n\n" + lineEnd, 0, false);
                         }
                     }
                     for (uint32 newItemEntryId : sT->collectionCache[accountId]) {
@@ -447,7 +447,7 @@ public:
                             break;
                         }
                         Item* newItem = allowedItems.at(i);
-                        AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, sT->GetItemIcon(newItem->GetEntry(), 30, 30, -18, 0) + sT->GetItemLink(newItem, session), slot, newItem->GetEntry(), "Using this item for transmogrify will bind it to you and make it non-refundable and non-tradeable.\nDo you wish to continue?\n\n" + sT->GetItemIcon(newItem->GetEntry(), 40, 40, -15, -10) + sT->GetItemLink(newItem, session) + lineEnd, price, false);
+                        AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, sT->GetItemIcon(newItem->GetEntry(), 30, 30, -18, 0) + sT->GetItemLink(newItem, session), slot, newItem->GetEntry(), "使用此物品进行幻化会将幻化物品绑定到你身上，并且使它们不可退还和不可交易。\n你想继续吗?\n\n" + sT->GetItemIcon(newItem->GetEntry(), 40, 40, -15, -10) + sT->GetItemLink(newItem, session) + lineEnd, price, false);
                     }
                 }
                 if (gossipPageNumber == EQUIPMENT_SLOT_END + 11)
@@ -547,7 +547,7 @@ private:
             return;
         uint32 itemId = itemTemplate->ItemId;
         uint32 accountId = player->GetSession()->GetAccountId();
-        std::string itemName = itemTemplate -> Name1;
+        std::string itemName = sT->GetItemLink(itemId, player->GetSession());
         std::stringstream tempStream;
         tempStream << std::hex << ItemQualityColors[itemTemplate->Quality];
         std::string itemQuality = tempStream.str();
@@ -555,7 +555,7 @@ private:
         if (sT->AddCollectedAppearance(accountId, itemId))
         {
             if (showChatMessage)
-                ChatHandler(player->GetSession()).PSendSysMessage( R"(|c%s|H物品:%u:0:0:0:0:0:0:0:0|h[%s]|h|r 已添加到您的外观收藏。)", itemQuality.c_str(), itemId, itemName.c_str());
+                ChatHandler(player->GetSession()).PSendSysMessage( R"(%s 已添加到您的外观收藏。)", itemName.c_str());
             CharacterDatabase.Execute( "INSERT INTO custom_unlocked_appearances (account_id, item_template_id) VALUES ({}, {})", accountId, itemId);
         }
     }
