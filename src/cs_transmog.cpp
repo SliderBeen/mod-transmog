@@ -140,7 +140,7 @@ public:
         std::stringstream tempStream;
         tempStream << std::hex << ItemQualityColors[itemTemplate->Quality];
         std::string itemQuality = tempStream.str();
-        std::string itemName = sTransmogrification->GetItemLink(itemId, player->GetSession());
+        std::string itemName = sTransmogrification->GetItemLink(itemId, target->GetSession());
         std::string playerName = player->GetName();
         std::string nameLink = handler->playerLink(playerName);
 
